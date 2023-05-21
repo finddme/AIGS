@@ -40,7 +40,7 @@ class BERT_API(torch.nn.Module):
     def __init__(self,args):
         super(BERT_API, self).__init__()
         self.num_labels = 3
-        self.model = BertModel.from_pretrained(args.model_path)
+        self.model = BertModel.from_pretrained(args.load_ck)
         self.dropout = torch.nn.Dropout(0.1)
         self.linear = torch.nn.Linear(self.model.config.hidden_size, self.num_labels)
         self.loss_fct = torch.nn.CrossEntropyLoss(reduction='mean')
